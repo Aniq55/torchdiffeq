@@ -54,8 +54,8 @@ class NeuralPhysics(nn.Module):
         super().__init__()
         self.initial_pos = nn.Parameter(torch.tensor([10.0]))
         self.initial_vel = nn.Parameter(torch.tensor([0.0]))
-        self.dynamics_fn = HamiltonianDynamics()
-        self.event_fn = EventFn()
+        self.dynamics_fn = HamiltonianDynamics() # check
+        self.event_fn = EventFn() # check
         self.inst_update = InstantaneousStateChange()
 
     def simulate(self, times):
@@ -154,7 +154,7 @@ class NeuralODE(nn.Module):
 
         self.odefunc.apply(init)
 
-    def forward(self, t, state):
+    def forward(self, t, state):# t not being used
         return self.odefunc(state)
 
     def simulate(self, times):
